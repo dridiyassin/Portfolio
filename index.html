@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<link rel="stylesheet" href="css/style.css">
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+
+		<video id="vid" autoplay playsinline loop muted webkit-playsinLine width="1280" height="720" style="display: none;" src="assets/videos/previewMonitor.mp4"></video>
+		<div id="leftMon">
+			<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/9ULMNfXTJL8?si=ZsDN7uGuKZRk4EQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+		</div>
+
+		<script type="importmap">
+			{
+			  "imports": {
+				"three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+				"three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+			  }
+			}
+		</script>
+
+		<script type="module" src="js/index.js"></script>
+	</body>
