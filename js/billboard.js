@@ -5,7 +5,27 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const loader = new GLTFLoader();
 
+export let bilTexture = 0;
+
 export function Billboard(scene){
+
+
+    let vid = document.getElementById("vidbil");
+vid.play();
+let vidTextureLocal = new THREE.VideoTexture(vid);
+
+vid.minFilter = THREE.LinearFilter;
+vid.magFilter = THREE.LinearFilter;
+
+bilTexture = vidTextureLocal;
+
+let vidMonitor1 = new THREE.MeshBasicMaterial({
+	map: vidTextureLocal,
+	side: THREE.FrontSide,
+	toneMapped: false,
+});
+
+
     loader.load(
         // resource URL
         'assets/models/Billboard.gltf',
@@ -15,13 +35,12 @@ export function Billboard(scene){
             scene.add( gltf.scene );
     
             gltf.animations; // Array<THREE.AnimationClip>
-            gltf.scene; // THREE.Group
-            gltf.scenes; // Array<THREE.Group>
-            gltf.cameras; // Array<THREE.Camera>
-            gltf.asset; // Object
+
             gltf.scene.position.set(0,-6,-11);
             gltf.scene.rotation.set(0,0,0);
             gltf.scene.scale.set(1.5,1.5,1.5);
+
+            gltf.scene.getObjectByName('Cube_1').material = vidMonitor1;
         },
         // called while loading is progressing
         function ( xhr ) {

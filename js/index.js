@@ -16,7 +16,7 @@ import {RightBuilding} from "./rightbuild.js";
 import {PlaceAllLights} from "./lights.js";
 
 import {NewAppleTree, NewHazelTree, NewTreesBG} from "./csprites.js";
-import { Billboard } from './billboard.js';
+import { Billboard, bilTexture } from './billboard.js';
 
 
 
@@ -116,7 +116,7 @@ function animate() {
     renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
     THREE.ColorManagement.enabled = true;
 	vidTexture.needsUpdate = true;
-
+	bilTexture.needsUpdate = true;
 
 	composer.render();
     //renderer.render( scene, camera );
