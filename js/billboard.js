@@ -11,9 +11,9 @@ export function Billboard(scene){
 
 
     let vid = document.getElementById("vidbil");
+    vid.play();
 
-vid.play();
-vid.muted = false;
+//vid.muted = false;
 let vidTextureLocal = new THREE.VideoTexture(vid);
 
 vid.minFilter = THREE.LinearFilter;
