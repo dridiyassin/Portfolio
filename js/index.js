@@ -19,12 +19,35 @@ import {NewAppleTree, NewHazelTree, NewTreesBG} from "./csprites.js";
 import { Billboard, bilTexture } from './billboard.js';
 
 
-
+const loadmanager = new THREE.LoadingManager();
 const scene = new THREE.Scene();
-const loader = new GLTFLoader();
-const textureLoader = new THREE.TextureLoader();
+const loader = new GLTFLoader(loadmanager);
+const textureLoader = new THREE.TextureLoader(loadmanager);
 
 
+const loadingGifContainer = document.getElementById("loadingContainer");
+const loadingGif = document.getElementById("loadingGif");
+const loadingButton = document.getElementById("loadingButton");
+
+loadmanager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+	loadingButton.addEventListener("click", function() {
+		document.getElementById("vidbil").muted = false;
+		loadingGifContainer.style.display = 'none';
+	  });
+};
+
+loadmanager.onLoad = function ( ) {
+	loadingGif.style.display = 'none';
+	loadingButton.style.display ='inline-flex';
+};
+
+loadmanager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+};
+
+loadmanager.onError = function ( url ) {
+	console.log( 'There was an error loading ' + url );
+};
 
 
 const BGText = textureLoader.load('assets/texture/cyberBG.png');
